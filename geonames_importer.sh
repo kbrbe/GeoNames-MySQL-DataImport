@@ -4,6 +4,9 @@ working_dir=$( cd "$( dirname "$0" )" && pwd )
 data_dir="$working_dir/data"
 zip_codes_dir="$working_dir/data/zip_codes"
 
+# get environment variables
+export $(cat .env | sed 's/#.*//g' | xargs)
+
 # [BEGIN] CONFIGURATION FOR THE SCRIPT
 # -------------------------------------
 
@@ -12,11 +15,11 @@ geonames_general_data_repo="http://download.geonames.org/export/dump/"
 geonames_postal_code_repo="http://download.geonames.org/export/zip/"
 
 # Default values for database variables.
-dbhost="localhost"
-dbport=3306
-dbname="geonames"
-dbusername="root"
-dbpassword="root"
+dbhost=$ENV_GEONAMES_LOOKUP_DB_HOST
+dbport=$ENV_GEONAMES_LOOKUP_DB_PORT
+dbname=$ENV_GEONAMES_LOOKUP_DB_NAME
+dbusername=$ENV_GEONAMES_LOOKUP_DB_USER
+dbpassword=$ENV_GEONAMES_LOOKUP_DB_PWD
 
 # Default value for download folder
 download_folder="$working_dir/download"
@@ -106,7 +109,12 @@ case $action in
                 mkdir -p "$working_dir/$3"
             fi
             # Changes the default download folder to the one specified by the user.
-            download_folder="$working_dir/$3"
+            if [[ $3 == /* ]];
+            then
+              download_folder="$3"
+            else
+              download_folder="$working_dir/$3"
+            fi
             echo "Changed default download folder to $download_folder"
         else
             # Creates default download folder
@@ -165,6 +173,7 @@ case "$action" in
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse "CREATE DATABASE $dbname DEFAULT CHARACTER SET utf8mb4;" 
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse "USE $dbname;" 
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_db_struct.sql"
+        mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_db_index.sql"
     ;;
         
     create-tables)
