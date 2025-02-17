@@ -4,7 +4,7 @@ CREATE TABLE `admin1CodesAscii` (
   `name` text,
   `nameAscii` text,
   `geonameid` int(11) DEFAULT NULL,
-  KEY `code` (`code`),
+  PRIMARY KEY `code` (`code`),
   KEY `name` (`name`(20)),
   KEY `nameAscii` (`nameAscii`(20)),
   KEY `geonameid` (`geonameid`)
@@ -16,7 +16,7 @@ CREATE TABLE `admin2Codes` (
   `name` text,
   `nameAscii` text,
   `geonameid` int(11) DEFAULT NULL,
-  KEY `code` (`code`),
+  PRIMARY KEY `code` (`code`),
   KEY `name` (`name`(80)),
   KEY `nameAscii` (`nameAscii`(80)),
   KEY `geonameid` (`geonameid`)
@@ -43,7 +43,7 @@ CREATE TABLE `continentCodes` (
   `code` char(2) DEFAULT NULL,
   `name` varchar(20) DEFAULT NULL,
   `geonameid` int(11) DEFAULT NULL,
-  KEY `code` (`code`),
+  PRIMARY KEY `code` (`code`),
   KEY `name` (`name`),
   KEY `geonameid` (`geonameid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -81,7 +81,7 @@ CREATE TABLE `featureCodes` (
   `code` char(7) DEFAULT NULL,
   `name` varchar(200) DEFAULT NULL,
   `description` text,
-  KEY `code` (`code`),
+  PRIMARY KEY `code` (`code`),
   KEY `name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE utf8mb4_unicode_ci;
 
@@ -166,7 +166,7 @@ CREATE TABLE `postalCodes` (
   KEY `admin1_code` (`admin1_code`),
   KEY `country` (`country`),
   KEY `name` (`name`),
-  KEY `postal_code` (`postal_code`),
+  PRIMARY KEY `postal_code` (`postal_code`),
   KEY `latitude` (`latitude`),
   KEY `longitude` (`longitude`),
   KEY `admin1_name` (`admin1_name`),
