@@ -1,4 +1,16 @@
-# V 2.0 Shell Script for importing geonames.org data dumps into a MySQL database.
+# Shell Script for importing geonames.org data dumps into a MySQL database.
+
+Scripts based on the codigofuerte/GeoNames-MySQL-DataImport repository.
+
+This forked repo contains a few changes with respect to the original. Please have a look into the CHANGELOG for more details.
+
+## Contact
+
+Sven Lieber - Sven.Lieber@kbr.be - Royal Library of Belgium (KBR) - https://www.kbr.be/en/
+
+* 
+
+# Original README
 
 Usage: geonames_importer.sh -a "action"
 
