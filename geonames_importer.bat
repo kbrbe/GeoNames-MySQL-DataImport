@@ -167,6 +167,7 @@ rem ####################    create-db       ####################
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% -Bse "CREATE DATABASE %dbname% DEFAULT CHARACTER SET utf8mb4;" 
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% -Bse "USE %dbname%;" 
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_db_struct.sql"
+    "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_db_index.sql"
     echo batch done
 goto :eof
 
