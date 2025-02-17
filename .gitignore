@@ -8,3 +8,4 @@ hierarchy.txt
 iso-languagecodes.txt
 no-country
 timeZones.txt
+.env
