@@ -6,6 +6,16 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This repository contains code to create a data corpus, instead of following [Semantic Versioning](https://semver.org/spec/v2.0.0.html) we use the date of a corpus release as version number, because in fact we implicitly version the corpus.
 Every version of the corpus may contain breaking changes, thus a semantic versioning with minor and patch would not be very effective.
 
+## [20260416] - 2026-04-16
+
+### Added
+
+- A new composite key to speed up query performance (https://github.com/kbrbe/geonames-lookup/issues/7). This change was applied in February, but is only commited now
+
+### Changed
+
+- Calling script to create indexes and DB schema improvements not only for `create-db` action, but also for `create-tables` action in bash and bat script 
+- New DB schema improvements script is automatically called when setting up the database (https://github.com/kbrbe/GeoNames-MySQL-DataImport/issues/1)
 
 ## [20250217] - 2025-02-17
 
@@ -21,3 +31,4 @@ This first version adapts the fork compared to the original.
 - Adding declarations of primary keys in `geonames_db_struct.sql`
 
 [20250217]: https://github.com/kbrbe/GeoNames-MySQL-DataImport/releases/tag/v0.1.0
+[20260416]: https://github.com/kbrbe/GeoNames-MySQL-DataImport/compare/v0.1.0...v0.1.1
