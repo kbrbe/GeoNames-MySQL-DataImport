@@ -174,12 +174,15 @@ case "$action" in
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse "USE $dbname;" 
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_db_struct.sql"
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_db_index.sql"
+        mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_schema_improvements.sql"
     ;;
         
     create-tables)
         echo "Creating tables for database $dbname..."
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword -Bse "USE $dbname;" 
         mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_db_struct.sql"
+        mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_db_index.sql"
+        mysql -h $dbhost -P $dbport -u $dbusername -p$dbpassword $dbname < "$working_dir/geonames_schema_improvements.sql"
     ;;
     
     import-dumps)

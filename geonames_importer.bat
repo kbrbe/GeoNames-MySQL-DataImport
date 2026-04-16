@@ -168,6 +168,7 @@ rem ####################    create-db       ####################
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% -Bse "USE %dbname%;" 
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_db_struct.sql"
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_db_index.sql"
+    "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_schema_improvements.sql"
     echo batch done
 goto :eof
 
@@ -176,6 +177,8 @@ rem ####################    create-tables   ####################
     echo Creating tables for database %dbname%...
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% -Bse "USE %dbname%;" 
     "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_db_struct.sql"
+    "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_db_index.sql"
+    "%sqlpath%mysql" -h %dbhost% -P %dbport% -u %dbusername% -p%dbpassword% %dbname% < "%working_dir%/geonames_schema_improvements.sql"
     echo batch done
 goto :eof
 
